@@ -64,40 +64,34 @@
                 </v-col>
                 <v-col cols="12" class="text-center">
                     <v-form v-model="valid">
-                        <v-container>
-                            <v-row>
-                                <v-col cols="12">
-                                    <v-card color="rgb(255, 255, 255, 0.8)">
-                                        <v-container>
-                                            <v-row>
-                                                <v-col cols="12">
-                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10" label="游戏昵称" required></v-text-field>
-                                                </v-col>
-                                                <v-col cols="12">
-                                                    <v-radio-group v-model="row" row>
-                                                        <v-radio v-for="n in 5" :key="n" :label="`Boss ${n}`" :value="n"></v-radio>
-                                                    </v-radio-group>
-                                                </v-col>
-                                                <v-col cols="12">
-                                                    <v-text-field v-model="dmg" :rules="dmgRules" label="造成伤害" required></v-text-field>
-                                                </v-col>
-                                                <v-col cols="12">
-                                                    <v-radio-group v-model="radios" :mandatory="false">
-                                                        <v-radio label="模拟战" value="radio-1"></v-radio>
-                                                        <v-radio label="正式战" value="radio-2"></v-radio>
-                                                    </v-radio-group>
-                                                </v-col>
-                                                <v-col cols="12">
-                                                    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
-                                                        提交
-                                                    </v-btn>
-                                                </v-col>
-                                            </v-row>
-                                        </v-container>
-                                    </v-card>
-                                </v-col>
-                            </v-row>
-                        </v-container>
+                        <v-card color="rgb(255, 255, 255, 0.8)">
+                            <v-container>
+                                <v-row>
+                                    <v-col cols="12">
+                                        <v-text-field v-model="name" :rules="nameRules" :counter="10" label="游戏昵称" required></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-radio-group v-model="row" row>
+                                            <v-radio v-for="n in 5" :key="n" :label="`Boss ${n}`" :value="n"></v-radio>
+                                        </v-radio-group>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-text-field v-model="dmg" :rules="dmgRules" label="造成伤害" required></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-radio-group v-model="radios" :mandatory="false">
+                                            <v-radio label="模拟战" value="radio-1"></v-radio>
+                                            <v-radio label="正式战" value="radio-2"></v-radio>
+                                        </v-radio-group>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
+                                            提交
+                                        </v-btn>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-card>
                     </v-form>
                 </v-col>
             </v-row>
