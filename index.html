@@ -18,9 +18,9 @@
         <v-container>
             <v-row style="justify-content: center;">
                 <v-col cols="12" lg="8" class="text-center">
-                    <h6>
+                    <h3>
                         {{ message }}
-                    </h6>
+                    </h3>
                 </v-col>
                 <v-col cols="12">
                     <v-container>
@@ -33,7 +33,7 @@
                     <v-list subheader color="rgb(255, 255, 255, 0.8)">
                         <v-subheader>正式战</v-subheader>
 
-                        <v-list-item v-for="item in atkList" :key="item.title" @click="" class="p-3">
+                        <v-list-item v-for="item in atkList" :key="item.title" @click="" class="m-3">
                             <v-list-item-avatar>
                                 <v-img class="mr-4" :src="item.avatar"></v-img>
                             </v-list-item-avatar>
@@ -55,7 +55,7 @@
                     <v-list subheader color="rgb(255, 255, 255, 0.8)">
                         <v-subheader>预选 (排队中)</v-subheader>
 
-                        <v-list-item v-for="item in preAtkList" :key="item.title" @click="">
+                        <v-list-item v-for="item in preAtkList" :key="item.title" @click="" class="m-3">
                             <v-list-item-avatar>
                                 <v-img class="mr-4" :src="item.avatar"></v-img class="mr-4">
                             </v-list-item-avatar>
@@ -71,8 +71,8 @@
                 </v-col>
                 <v-col cols="12" class="text-center">
                     <v-form v-model="valid">
-                        <v-card color="rgb(255, 255, 255, 0.8)">
-                            <v-container>
+                        <v-card color="rgb(255, 255, 255, 0.8)" class="p-3">
+                            <v-container class="p-3">
                                 <v-row>
                                     <v-col cols="12">
                                         <v-text-field v-model="name" :rules="nameRules" :counter="10" label="游戏昵称" required></v-text-field>
@@ -103,6 +103,14 @@
                 </v-col>
             </v-row>
         </v-container>
+
+        <v-footer padless>
+            <v-col class="text-center" cols="12" color="rgb(255, 255, 255, 0.5)">
+                <small>
+                    {{ new Date().getFullYear() }} — <strong>Power by Hibiki</strong>
+                </small>
+            </v-col>
+        </v-footer>
 
     </div>
 </body>
