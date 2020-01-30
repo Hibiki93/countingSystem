@@ -19,7 +19,9 @@
             <v-row style="justify-content: center;">
                 <v-col cols="12" lg="8" class="text-center">
                     <h3>
-                        {{ message }}
+                        <b class="white--text">
+                            {{ message }}
+                        </b>
                     </h3>
                 </v-col>
                 <v-col cols="12">
@@ -105,9 +107,9 @@
         </v-container>
 
         <v-footer padless>
-            <v-col class="text-center" cols="12" color="rgb(255, 255, 255, 0.5)">
+            <v-col class="text-center lighten-2" cols="12" color="rgb(0, 0, 0, 0.5)">
                 <small>
-                    {{ new Date().getFullYear() }} — <strong>Power by Hibiki</strong>
+                     <strong>Power by Hibiki</strong> — &copy;{{ new Date().getFullYear() }}
                 </small>
             </v-col>
         </v-footer>
