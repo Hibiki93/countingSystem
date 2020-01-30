@@ -3,32 +3,166 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>公主结社</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.1.12/vuetify.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div id="app">
-                    {{ message }}
-                </div>
-            </div>
-        </div>
+    <div id="app" style="background: url(https://image.b2bmilestone.com/2a6f31e9cc2a1c99d68e4315872c99870640c76b/000901788_01.jpg) no-repeat center; background-size: cover;">
+        <v-container>
+            <v-row style="justify-content: center;">
+                <v-col cols="12" lg="8" class="text-center">
+                    <h6>
+                        {{ message }}
+                    </h6>
+                </v-col>
+                <v-col cols="12">
+                    <v-container>
+                        <v-row>
+                            <v-col cols="12">
+
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                    <v-list subheader color="rgb(255, 255, 255, 0.8)">
+                        <v-subheader>正式战</v-subheader>
+
+                        <v-list-item v-for="item in atkList" :key="item.title" @click="">
+                            <v-list-item-avatar>
+                                <v-img class="mr-4" :src="item.avatar"></v-img>
+                            </v-list-item-avatar>
+
+                            <v-list-item-content>
+                                <v-list-item-title v-text="item.title"></v-list-item-title>
+                                <v-col>
+                                    对<b v-text="item.boss" color="pink"></b>造成 <b v-text="item.dmg" color="red"></b> 的伤害
+                                </v-col>
+                        </v-list-item>
+                    </v-list>
+
+                    <v-divider></v-divider>
+
+                    <v-list subheader color="rgb(255, 255, 255, 0.8)">
+                        <v-subheader>预选 (排队中)</v-subheader>
+
+                        <v-list-item v-for="item in preAtkList" :key="item.title" @click="">
+                            <v-list-item-avatar>
+                                <v-img class="mr-4" :src="item.avatar"></v-img class="mr-4">
+                            </v-list-item-avatar>
+
+                            <v-list-item-content>
+                                <v-list-item-title v-text="item.title"></v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list>
+                </v-col>
+                <v-col cols="12" class="text-center">
+                    <v-form v-model="valid">
+                        <v-container>
+                            <v-row>
+                                <v-col cols="12">
+                                    <v-card color="rgb(255, 255, 255, 0.8)">
+                                        <v-container>
+                                            <v-row>
+                                                <v-col cols="12">
+                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10" label="游戏昵称" required></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12">
+                                                    <v-radio-group v-model="row" row>
+                                                        <v-radio v-for="n in 5" :key="n" :label="`Boss ${n}`" :value="n"></v-radio>
+                                                    </v-radio-group>
+                                                </v-col>
+                                                <v-col cols="12">
+                                                    <v-text-field v-model="dmg" :rules="dmgRules" label="造成伤害" required></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12">
+                                                    <v-radio-group v-model="radios" :mandatory="false">
+                                                        <v-radio label="模拟战" value="radio-1"></v-radio>
+                                                        <v-radio label="正式战" value="radio-2"></v-radio>
+                                                    </v-radio-group>
+                                                </v-col>
+                                                <v-col cols="12">
+                                                    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
+                                                        提交
+                                                    </v-btn>
+                                                </v-col>
+                                            </v-row>
+                                        </v-container>
+                                    </v-card>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-form>
+                </v-col>
+            </v-row>
+        </v-container>
+
     </div>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-select/3.4.0/vue-select.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 <script>
     var app = new Vue({
         el: '#app',
+        vuetify: new Vuetify(),
         data: {
-            message: 'Hello Vue!'
+            valid: true,
+            message: '公主结社 报刀系统',
+            name: '',
+            boss: '',
+            dmg: '',
+            nameRules: [
+                v => !!v || '必须填写正确昵称',
+                v => (v && v.length <= 10 && v.length > 2) || '确保昵称是正确的,并且不少于2字',
+            ],
+            dmgRules: [
+                v => !!v || '必须填写伤害',
+                v => (v && v.length <= 10) || '伤害不能超过现阶段王的血量',
+            ],
+            atkList: [{
+                active: true,
+                title: '起司猫君',
+                avatar: 'https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png',
+                boss: 'b1',
+                dmg: '600000'
+            }, {
+                active: true,
+                title: '傲娇的小乐',
+                avatar: 'https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png',
+                boss: 'b2',
+                dmg: '480000'
+            }, {
+                title: '小七',
+                avatar: 'https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png',
+                boss: 'b2',
+                dmg: '120000'
+            }, {
+                title: '飞电或人',
+                avatar: 'https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png',
+                boss: 'b3',
+                dmg: '50000'
+            }, ],
+            preAtkList: [{
+                title: '源氏',
+                avatar: 'https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png'
+            }, {
+                title: '起司猫君',
+                avatar: 'https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png'
+            }, ],
+        },
+        methods: {
+            validate() {
+                if (this.$refs.form.validate()) {
+                    this.snackbar = true
+                }
+            }
         }
     })
 </script>
