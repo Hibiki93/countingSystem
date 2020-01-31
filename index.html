@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div id="app" style="background: url(https://image.b2bmilestone.com/2a6f31e9cc2a1c99d68e4315872c99870640c76b/000901788_01.jpg) no-repeat center; background-size: cover;">
+    <div id="app" style="background: url(https://image.b2bmilestone.com/2a6f31e9cc2a1c99d68e4315872c99870640c76b/000901788_01.jpg) no-repeat center; background-size: cover; height: 100vh;">
         <v-container>
             <v-row style="justify-content: center;">
                 <v-col cols="12" lg="8" class="text-center">
@@ -28,60 +28,36 @@
                 <v-col cols="12">
                     <v-card color="rgb(255, 255, 255, 0.1)">
                         <v-toolbar flat dark color="rgb(0, 0, 0, 0.8)">
-                            <v-toolbar-title>
-                                <v-icon left>fab fa-optin-monster</v-icon> 公主结社 战队赛 状况</v-toolbar-title>
+                            <v-icon left>fab fa-optin-monster</v-icon>
+                            <v-toolbar-title v-text="default_text.subTitle">
+                            </v-toolbar-title>
                         </v-toolbar>
                         <v-tabs vertical color="rgb(0, 0, 0, 0.8)">
-                            <v-tab color="rgb(0, 0, 0, 0.8)">
-                                <v-avatar size=" 36 " class="mr-2">
-                                    <img src="https://appmedia.jp/wp-content/uploads/2018/03/gateway-4-1.png " alt="John ">
+                            <v-tab v-for="item in default_text.boss" color="rgb(0, 0, 0, 0.8)">
+                                <v-avatar size="36" class="mr-2">
+                                    <img :src="item.pic" alt="John ">
                                 </v-avatar>
-                                一 王
-                            </v-tab>
-                            <v-tab color="rgb(0, 0, 0, 0.8)">
-                                <v-avatar size="36 " class="mr-2 ">
-                                    <img src="https://appmedia.jp/wp-content/uploads/2018/03/gateway-3-1.png " alt="John ">
-                                </v-avatar>
-                                二 王
-                            </v-tab>
-                            <v-tab color="rgb(0, 0, 0, 0.8)">
-                                <v-avatar size="36 " class="mr-2 ">
-                                    <img src="https://appmedia.jp/wp-content/uploads/2018/03/65aebccd53448938bbbdead655016f62.png " alt="John ">
-                                </v-avatar>
-                                三 王
-                            </v-tab>
-                            <v-tab color="rgb(0, 0, 0, 0.8)">
-                                <v-avatar size="36 " class="mr-2 ">
-                                    <img src="https://appmedia.jp/wp-content/uploads/2019/08/89931a0c09c2ad03aad64628979f8bf9.png " alt="John ">
-                                </v-avatar>
-                                四 王
-                            </v-tab>
-                            <v-tab color="rgb(0, 0, 0, 0.8)">
-                                <v-avatar size="36 " class="mr-2 ">
-                                    <img src="https://appmedia.jp/wp-content/uploads/2018/03/4a84f29a534535b5779fec7a9098712a.jpg " alt="John ">
-                                </v-avatar>
-                                五 王
+                               <p v-text="item.name"></p>
                             </v-tab>
                             <!--Start Tab 1 -->
-                            <v-tab-item color="rgb(0, 0, 0, 0.8)">
+                            <v-tab-item v-for="tab_item in tab_items" color="rgb(0, 0, 0, 0.8)">
                                 <v-card flat>
                                     <v-card-text>
                                         <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader>正式战</v-subheader>
+                                            <v-subheader v-text="default_text.onGoing"></v-subheader>
 
-                                            <v-list-item v-for="item in atkList1" :key="item.title" @click=" " class="m-3">
+                                            <v-list-item v-for="item in tab_items.atkList" :key="item.id" @click=" " class="m-3">
                                                 <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
+                                                    <v-img class="mr-4" src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
                                                 </v-list-item-avatar>
-
                                                 <v-list-item-content>
                                                     <v-list-item-title v-text="item.name"></v-list-item-title>
                                                     <v-col>
-                                                        <b color="red-text" style="color: red;">战斗中</b>
+                                                        <b color="red-text" style="color: red;" v-text="default_text.onBattle"></b>
                                                     </v-col>
                                                 </v-list-item-content>
                                                 <v-list-item-action>
-                                                    <v-btn>战斗完成</v-btn>
+                                                    <v-btn v-text="default_text.battleComplete"></v-btn>
                                                 </v-list-item-action>
                                             </v-list-item>
                                         </v-list>
@@ -89,15 +65,15 @@
                                         <v-divider></v-divider>
 
                                         <v-list subheader color="rgb(255, 255, 255, 0.8) ">
-                                            <v-subheader>预选 (排队中)</v-subheader>
+                                            <v-subheader  v-text="default_text.ready"></v-subheader>
 
-                                            <v-list-item v-for="item in preAtkList1 " :key="item.title " @click=" " class="m-3 ">
+                                            <v-list-item v-for="item in tab_items.preAtkList" :key="item.title " @click=" " class="m-3 ">
                                                 <v-list-item-avatar>
                                                     <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
                                                 </v-list-item-avatar>
 
                                                 <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name "></v-list-item-title>
+                                                    <v-list-item-title v-text="item.name"></v-list-item-title>
                                                 </v-list-item-content>
                                             </v-list-item>
                                         </v-list>
@@ -111,9 +87,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" @click="submitQueue(1)">
-                                                                        提交
-                                                                    </v-btn>
+                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" v-text="default_text.submit" @click="submitQueue(1)"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -125,258 +99,6 @@
                                 </v-card>
                             </v-tab-item>
                             <!--End Tab 1 -->
-                            <!--Start Tab 2 -->
-                            <v-tab-item color="rgb(0, 0, 0, 0.8)">
-                                <v-card flat>
-                                    <v-card-text>
-                                        <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader>正式战</v-subheader>
-
-                                            <v-list-item v-for="item in atkList2" :key="item.id" @click="battleComplete(item.id)" class="m-3">
-                                                <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
-                                                </v-list-item-avatar>
-
-                                                <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name"></v-list-item-title>
-                                                    <v-col>
-                                                        <b color="red-text" style="color: red;">战斗中</b>
-                                                    </v-col>
-                                                </v-list-item-content>
-                                                <v-list-item-action>
-                                                    <v-btn>战斗完成</v-btn>
-                                                </v-list-item-action>
-                                            </v-list-item>
-                                        </v-list>
-
-                                        <v-divider></v-divider>
-
-                                        <v-list subheader color="rgb(255, 255, 255, 0.8) ">
-                                            <v-subheader>预选 (排队中)</v-subheader>
-
-                                            <v-list-item v-for="item in preAtkList2 " :key="item.title" @click=" " class="m-3 ">
-                                                <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
-                                                </v-list-item-avatar>
-
-                                                <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name"></v-list-item-title>
-                                                </v-list-item-content>
-                                            </v-list-item>
-                                        </v-list>
-                                        <v-row style="justify-content: center;">
-                                            <v-col cols="12" md="8" class="text-center ">
-                                                <v-form v-model="valid">
-                                                    <v-card color="rgb(255, 255, 255, 0.8) " class="p-3 ">
-                                                        <v-container class="p-3 ">
-                                                            <v-row>
-                                                                <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
-                                                                </v-col>
-                                                                <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" @click="submitQueue(2)">
-                                                                        提交
-                                                                    </v-btn>
-                                                                </v-col>
-                                                            </v-row>
-                                                        </v-container>
-                                                    </v-card>
-                                                </v-form>
-                                            </v-col>
-                                        </v-row>
-                                    </v-card-text>
-                                </v-card>
-                            </v-tab-item>
-                            <!--End Tab 2 -->
-                            <!--Start Tab 3 -->
-                            <v-tab-item color="rgb(0, 0, 0, 0.8)">
-                                <v-card flat>
-                                    <v-card-text>
-                                        <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader>正式战</v-subheader>
-
-                                            <v-list-item v-for="item in atkList3" :key="item.title" @click=" " class="m-3">
-                                                <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
-                                                </v-list-item-avatar>
-
-                                                <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name"></v-list-item-title>
-                                                    <v-col>
-                                                        <b color="red-text" style="color: red;">战斗中</b>
-                                                    </v-col>
-                                                </v-list-item-content>
-                                                <v-list-item-action>
-                                                    <v-btn>战斗完成</v-btn>
-                                                </v-list-item-action>
-                                            </v-list-item>
-                                        </v-list>
-
-                                        <v-divider></v-divider>
-
-                                        <v-list subheader color="rgb(255, 255, 255, 0.8) ">
-                                            <v-subheader>预选 (排队中)</v-subheader>
-
-                                            <v-list-item v-for="item in preAtkList3 " :key="item.title" @click=" " class="m-3 ">
-                                                <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
-                                                </v-list-item-avatar>
-
-                                                <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name"></v-list-item-title>
-                                                </v-list-item-content>
-                                            </v-list-item>
-                                        </v-list>
-                                        <v-row style="justify-content: center;">
-                                            <v-col cols="12" md="8" class="text-center ">
-                                                <v-form v-model="valid">
-                                                    <v-card color="rgb(255, 255, 255, 0.8) " class="p-3 ">
-                                                        <v-container class="p-3 ">
-                                                            <v-row>
-                                                                <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
-                                                                </v-col>
-                                                                <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" @click="submitQueue(3)">
-                                                                        提交
-                                                                    </v-btn>
-                                                                </v-col>
-                                                            </v-row>
-                                                        </v-container>
-                                                    </v-card>
-                                                </v-form>
-                                            </v-col>
-                                        </v-row>
-                                    </v-card-text>
-                                </v-card>
-                            </v-tab-item>
-                            <!--End Tab 3 -->
-                            <!--Start Tab 4 -->
-                            <v-tab-item color="rgb(0, 0, 0, 0.8)">
-                                <v-card flat>
-                                    <v-card-text>
-                                        <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader>正式战</v-subheader>
-
-                                            <v-list-item v-for="item in atkList4" :key="item.title" @click=" " class="m-3">
-                                                <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
-                                                </v-list-item-avatar>
-
-                                                <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name"></v-list-item-title>
-                                                    <v-col>
-                                                        <b color="red-text" style="color: red;">战斗中</b>
-                                                    </v-col>
-                                                </v-list-item-content>
-                                                <v-list-item-action>
-                                                    <v-btn>战斗完成</v-btn>
-                                                </v-list-item-action>
-                                            </v-list-item>
-                                        </v-list>
-
-                                        <v-divider></v-divider>
-
-                                        <v-list subheader color="rgb(255, 255, 255, 0.8) ">
-                                            <v-subheader>预选 (排队中)</v-subheader>
-
-                                            <v-list-item v-for="item in preAtkList4 " :key="item.title " @click=" " class="m-3 ">
-                                                <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
-                                                </v-list-item-avatar>
-
-                                                <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name "></v-list-item-title>
-                                                </v-list-item-content>
-                                            </v-list-item>
-                                        </v-list>
-                                        <v-row style="justify-content: center;">
-                                            <v-col cols="12" md="8" class="text-center ">
-                                                <v-form v-model="valid">
-                                                    <v-card color="rgb(255, 255, 255, 0.8) " class="p-3 ">
-                                                        <v-container class="p-3 ">
-                                                            <v-row>
-                                                                <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
-                                                                </v-col>
-                                                                <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" @click="submitQueue(4)">
-                                                                        提交
-                                                                    </v-btn>
-                                                                </v-col>
-                                                            </v-row>
-                                                        </v-container>
-                                                    </v-card>
-                                                </v-form>
-                                            </v-col>
-                                        </v-row>
-                                    </v-card-text>
-                                </v-card>
-                            </v-tab-item>
-                            <!--End Tab 4 -->
-                            <!--Start Tab 5 -->
-                            <v-tab-item color="rgb(0, 0, 0, 0.8)">
-                                <v-card flat>
-                                    <v-card-text>
-                                        <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader>正式战</v-subheader>
-
-                                            <v-list-item v-for="item in atkList5" :key="item.title" @click=" " class="m-3">
-                                                <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
-                                                </v-list-item-avatar>
-
-                                                <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name"></v-list-item-title>
-                                                    <v-col>
-                                                        <b color="red-text" style="color: red;">战斗中</b>
-                                                    </v-col>
-                                                </v-list-item-content>
-                                                <v-list-item-action>
-                                                    <v-btn @click="battleComplete(item.id)">战斗完成</v-btn>
-                                                </v-list-item-action>
-                                            </v-list-item>
-                                        </v-list>
-
-                                        <v-divider></v-divider>
-
-                                        <v-list subheader color="rgb(255, 255, 255, 0.8) ">
-                                            <v-subheader>预选 (排队中)</v-subheader>
-
-                                            <v-list-item v-for="item in preAtkList5 " :key="item.title " @click=" " class="m-3 ">
-                                                <v-list-item-avatar>
-                                                    <v-img class="mr-4 " src="https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png"></v-img>
-                                                </v-list-item-avatar>
-
-                                                <v-list-item-content>
-                                                    <v-list-item-title v-text="item.name "></v-list-item-title>
-                                                </v-list-item-content>
-                                            </v-list-item>
-                                        </v-list>
-                                        <v-row style="justify-content: center;">
-                                            <v-col cols="12" md="8" class="text-center ">
-                                                <v-form v-model="valid">
-                                                    <v-card color="rgb(255, 255, 255, 0.8) " class="p-3 ">
-                                                        <v-container class="p-3 ">
-                                                            <v-row>
-                                                                <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
-                                                                </v-col>
-                                                                <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" @click="submitQueue(5)">
-                                                                        提交
-                                                                    </v-btn>
-                                                                </v-col>
-                                                            </v-row>
-                                                        </v-container>
-                                                    </v-card>
-                                                </v-form>
-                                            </v-col>
-                                        </v-row>
-                                    </v-card-text>
-                                </v-card>
-                            </v-tab-item>
-                            <!--End Tab 5 -->
 
                         </v-tabs>
                     </v-card>
@@ -390,7 +112,7 @@
             </v-row>
         </v-container>
 
-        <v-footer padless>
+        <v-footer padless style="position: fixed; bottom: 0;width: 100%;">
             <v-col class="text-center lighten-2 " cols="12 " color="rgb(0, 0, 0, 0.5) ">
                 <small>
                      <strong>Power by Hibiki</strong> — &copy;{{ new Date().getFullYear() }}
@@ -421,20 +143,77 @@
             target: '',
             snackbar: false,
             text: '成功提交',
+            default_text:{
+                boss:[
+                    {
+                        name:'一王',
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/6e62cae5b99034b2b9678a230e95bd3e.png'
+                    },
+                    {
+                        name:'二王',
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/73560c1aaabe170dff808615e0d0ff57.jpg'
+                    },
+                    {
+                        name:'三王',
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/495320833c0277bfdba40f72aded6604.jpg'
+                    },
+                    {
+                        name:'四王',
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/075dfe3f0ed8b627a0a8894d64c4313a.png'
+                    },
+                    {
+                        name:'五王',
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/8f7f718840db69b983fbbf90a7a73401.jpg'
+                    },
+                ],
+                subTitle:'公主結社 戰隊賽 狀況',
+                onGoing:'正式戰',
+                ready:'預選（排隊中)',
+                battleComplete:'戰鬥結束',
+                onBattle:'戰鬥中',
+                submit:'提交',
+            },
+            tab_items:[
+                {
+                    id:'1',
+                    atkList:[],
+                    preAtkList:[],
+                },
+                {
+                    id:'2',
+                    atkList:[],
+                    preAtkList:[],
+                },
+                {
+                    id:'3',
+                    atkList:[],
+                    preAtkList:[],
+                },
+                {
+                    id:'4',
+                    atkList:[],
+                    preAtkList:[],
+                },
+                {
+                    id:'5',
+                    atkList:[],
+                    preAtkList:[],
+                },
+            ],
             nameRules: [
                 v => !!v || '必须填写正确昵称',
                 v => (v && v.length <= 10 && v.length > 2) || '确保昵称是正确的,并且不少于2字',
             ],
-            atkList1: [],
-            preAtkList1: [],
-            atkList2: [],
-            preAtkList2: [],
-            atkList3: [],
-            preAtkList3: [],
-            atkList4: [],
-            preAtkList4: [],
-            atkList5: [],
-            preAtkList5: [],
+            // atkList1: [],
+            // preAtkList1: [],
+            // atkList2: [],
+            // preAtkList2: [],
+            // atkList3: [],
+            // preAtkList3: [],
+            // atkList4: [],
+            // preAtkList4: [],
+            // atkList5: [],
+            // preAtkList5: [],
         },
         mounted: function() {
             this.$vuetify.theme.primary = '#5E35B1';
@@ -452,9 +231,9 @@
             firebase.initializeApp(firebaseConfig);
             var db;
             this.db = firebase.firestore(app);
-            let waitingRef = this.db.collection('waitingList');
+            let waitingRef = this.db.collection('waitingList').orderBy("time","desc");
             let waitingList = waitingRef.get()
-                .then(snapshot => {
+                waitingList.then(snapshot => {
                     snapshot.forEach(doc => {
                         const data = {
                             'id': doc.id,
@@ -466,42 +245,42 @@
                         if (doc.data().status == true) {
                             switch (doc.data().target) {
                                 case 1:
-                                    this.atkList1.push(data);
+                                    this.tab_items[0].atkList.push(data);
                                     break;
                                 case 2:
-                                    this.atkList2.push(data);
+                                this.tab_items[1].atkList.push(data);
                                     break;
                                 case 3:
-                                    this.atkList3.push(data);
+                                this.tab_items[2].atkList.push(data);
                                     break;
                                 case 4:
-                                    this.atkList4.push(data);
+                                this.tab_items[3].atkList.push(data);
                                     break;
                                 case 5:
-                                    this.atkList5.push(data);
+                                this.tab_items[4].atkList.push(data);
                                     break;
                             }
                         } else {
                             switch (doc.data().target) {
                                 case 1:
-                                    this.preAtkList1.push(data);
+                                this.tab_items[0].preAtkList.push(data);
                                     break;
                                 case 2:
-                                    this.preAtkList2.push(data);
+                                this.tab_items[1].preAtkList.push(data);
                                     break;
                                 case 3:
-                                    this.preAtkList3.push(data);
+                                this.tab_items[2].preAtkList.push(data);
                                     break;
                                 case 4:
-                                    this.preAtkList4.push(data);
+                                this.tab_items[3].preAtkList.push(data);
                                     break;
                                 case 5:
-                                    this.preAtkList5.push(data);
+                                this.tab_items[4].preAtkList.push(data);
                                     break;
                             }
                         }
-                        console.log(doc.id, '=>', doc.data());
-                        console.log(this.atkList1);
+                        // console.log(doc.id, '=>', doc.data());
+                        console.log(this.tab_items[0].atkList);
                     });
                 })
                 .catch(err => {
