@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.1.12/vuetify.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 
@@ -25,83 +26,109 @@
                     </h3>
                 </v-col>
                 <v-col cols="12">
-                    <v-container>
-                        <v-row>
-                            <v-col cols="12">
+                    <v-card>
+                        <v-toolbar flat color="primary" dark>
+                            <v-toolbar-title>
+                                <v-icon left>fab fa-optin-monster</v-icon> 公主结社 战队赛 状况</v-toolbar-title>
+                        </v-toolbar>
+                        <v-tabs vertical>
+                            <v-tab>
+                                <v-avatar size="36" class="mr-2">
+                                    <img src="https://appmedia.jp/wp-content/uploads/2018/03/gateway-4-1.png" alt="John">
+                                </v-avatar>
+                                一 王
+                            </v-tab>
+                            <v-tab>
+                                <v-avatar size="36" class="mr-2">
+                                    <img src="https://appmedia.jp/wp-content/uploads/2018/03/gateway-3-1.png" alt="John">
+                                </v-avatar>
+                                二 王
+                            </v-tab>
+                            <v-tab>
+                                <v-avatar size="36" class="mr-2">
+                                    <img src="https://appmedia.jp/wp-content/uploads/2018/03/65aebccd53448938bbbdead655016f62.png" alt="John">
+                                </v-avatar>
+                                三 王
+                            </v-tab>
+                            <v-tab>
+                                <v-avatar size="36" class="mr-2">
+                                    <img src="https://appmedia.jp/wp-content/uploads/2019/08/89931a0c09c2ad03aad64628979f8bf9.png" alt="John">
+                                </v-avatar>
+                                四 王
+                            </v-tab>
+                            <v-tab>
+                                <v-avatar size="36" class="mr-2">
+                                    <img src="https://appmedia.jp/wp-content/uploads/2018/03/4a84f29a534535b5779fec7a9098712a.jpg" alt="John">
+                                </v-avatar>
+                                五 王
+                            </v-tab>
 
-                            </v-col>
-                        </v-row>
-                    </v-container>
-                    <v-list subheader color="rgb(255, 255, 255, 0.8)">
-                        <v-subheader>正式战</v-subheader>
+                            <v-tab-item>
+                                <v-card flat>
+                                    <v-card-text>
+                                        <v-list subheader color="rgb(255, 255, 255, 0.8)">
+                                            <v-subheader>正式战</v-subheader>
 
-                        <v-list-item v-for="item in atkList" :key="item.title" @click="" class="m-3">
-                            <v-list-item-avatar>
-                                <v-img class="mr-4" :src="item.avatar"></v-img>
-                            </v-list-item-avatar>
+                                            <v-list-item v-for="item in atkList" :key="item.title" @click="" class="m-3">
+                                                <v-list-item-avatar>
+                                                    <v-img class="mr-4" :src="item.avatar"></v-img>
+                                                </v-list-item-avatar>
 
-                            <v-list-item-content>
-                                <v-list-item-title v-text="item.title"></v-list-item-title>
-                                <v-col>
-                                    <b v-text="item.dmg" color="red"></b>
-                                </v-col>
-                            </v-list-item-content>
-                            <v-list-item-action>
-                                <v-btn>战斗完成</v-btn>
-                            </v-list-item-action>
-                        </v-list-item>
-                    </v-list>
+                                                <v-list-item-content>
+                                                    <v-list-item-title v-text="item.title"></v-list-item-title>
+                                                    <v-col>
+                                                        <b v-text="item.dmg" color="red"></b>
+                                                    </v-col>
+                                                </v-list-item-content>
+                                                <v-list-item-action>
+                                                    <v-btn>战斗完成</v-btn>
+                                                </v-list-item-action>
+                                            </v-list-item>
+                                        </v-list>
 
-                    <v-divider></v-divider>
+                                        <v-divider></v-divider>
 
-                    <v-list subheader color="rgb(255, 255, 255, 0.8)">
-                        <v-subheader>预选 (排队中)</v-subheader>
+                                        <v-list subheader color="rgb(255, 255, 255, 0.8)">
+                                            <v-subheader>预选 (排队中)</v-subheader>
 
-                        <v-list-item v-for="item in preAtkList" :key="item.title" @click="" class="m-3">
-                            <v-list-item-avatar>
-                                <v-img class="mr-4" :src="item.avatar"></v-img class="mr-4">
-                            </v-list-item-avatar>
+                                            <v-list-item v-for="item in preAtkList" :key="item.title" @click="" class="m-3">
+                                                <v-list-item-avatar>
+                                                    <v-img class="mr-4" :src="item.avatar"></v-img class="mr-4">
+                                                </v-list-item-avatar>
 
-                            <v-list-item-content>
-                                <v-list-item-title v-text="item.title"></v-list-item-title>
-                                <span> 目标
-                                    <b v-text="item.target"></b>
-                                </span>
-                            </v-list-item-content>
-                        </v-list-item>
-                    </v-list>
-                </v-col>
-                <v-col cols="12" class="text-center">
-                    <v-form v-model="valid">
-                        <v-card color="rgb(255, 255, 255, 0.8)" class="p-3">
-                            <v-container class="p-3">
-                                <v-row>
-                                    <v-col cols="12">
-                                        <v-text-field v-model="name" :rules="nameRules" :counter="10" label="游戏昵称" required></v-text-field>
-                                    </v-col>
-                                    <v-col cols="12">
-                                        <v-radio-group v-model="row" row>
-                                            <v-radio v-for="n in 5" :key="n" :label="`Boss ${n}`" :value="n"></v-radio>
-                                        </v-radio-group>
-                                    </v-col>
-                                    <!-- <v-col cols="12">
-                                        <v-text-field v-model="dmg" :rules="dmgRules" label="造成伤害" required></v-text-field>
-                                    </v-col> -->
-                                    <!-- <v-col cols="12">
-                                        <v-radio-group v-model="radios" :mandatory="false">
-                                            <v-radio label="模拟战" value="radio-1"></v-radio>
-                                            <v-radio label="正式战" value="radio-2"></v-radio>
-                                        </v-radio-group>
-                                    </v-col> -->
-                                    <v-col cols="12">
-                                        <v-btn :disabled="!valid" class="mr-4 purple darken-2 text-center" @click="validate">
-                                            提交
-                                        </v-btn>
-                                    </v-col>
-                                </v-row>
-                            </v-container>
-                        </v-card>
-                    </v-form>
+                                                <v-list-item-content>
+                                                    <v-list-item-title v-text="item.title"></v-list-item-title>
+                                                </v-list-item-content>
+                                            </v-list-item>
+                                        </v-list>
+
+                                        <v-col cols="12" class="text-center">
+
+                                            <v-form v-model="valid">
+                                                <v-card color="rgb(255, 255, 255, 0.8)" class="p-3">
+                                                    <v-container class="p-3">
+                                                        <v-row>
+                                                            <v-col cols="12">
+                                                                <v-text-field v-model="name" :rules="nameRules" :counter="10" label="游戏昵称" required></v-text-field>
+                                                            </v-col>
+                                                            <v-col cols="12">
+                                                                <v-text-field v-model="target" v-text="1" required readonly></v-text-field>
+                                                            </v-col>
+                                                            <v-col cols="12">
+                                                                <v-btn :disabled="!valid" class="mr-4 purple darken-2 text-center" @click="validate">
+                                                                    提交
+                                                                </v-btn>
+                                                            </v-col>
+                                                        </v-row>
+                                                    </v-container>
+                                                </v-card>
+                                            </v-form>
+                                        </v-col>
+                                    </v-card-text>
+                                </v-card>
+                            </v-tab-item>
+                        </v-tabs>
+                    </v-card>
                 </v-col>
             </v-row>
         </v-container>
@@ -116,6 +143,34 @@
 
     </div>
 </body>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyC0VuR-Bt32-o9yaZWlR7AXWhd7twOqKBs",
+        authDomain: "countingdatabase.firebaseapp.com",
+        databaseURL: "https://countingdatabase.firebaseio.com",
+        projectId: "countingdatabase",
+        storageBucket: "countingdatabase.appspot.com",
+        messagingSenderId: "155011884318",
+        appId: "1:155011884318:web:519e48a2c6dd4187b2550f"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+    var database = firebase.database();
+    var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+    starCountRef.on('value', function(snapshot) {
+        updateStarCount(postElement, snapshot.val());
+    });
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-select/3.4.0/vue-select.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
@@ -146,11 +201,9 @@
             preAtkList: [{
                 title: 'シンオ',
                 avatar: 'https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png',
-                target: 'b1',
             }, {
                 title: '起司猫君',
                 avatar: 'https://i.pinimg.com/originals/5b/45/4d/5b454d2085fe822e04b0d692735d95ec.png',
-                target: 'b3',
             }, ],
         },
         mounted: function() {
@@ -161,6 +214,16 @@
             validate() {
                 if (this.$refs.form.validate()) {
                     this.snackbar = true
+                }
+                var date = new Date();
+                var timestamp = date.getTime();
+
+                function writeUserData(userId, name, email, imageUrl) {
+                    firebase.database().ref('waitingList/' + userId).set({
+                        name: name,
+                        target: target,
+                        time: timestamp
+                    });
                 }
             }
         }
