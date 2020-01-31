@@ -463,7 +463,7 @@
             firebase.initializeApp(firebaseConfig);
             var db;
             this.db = firebase.firestore(app);
-            let waitingRef = this.db.collection('waitingList').orderBy("time","desc");
+            let waitingRef = this.db.collection('waitingList').orderBy("time");
             let waitingList = waitingRef.get()
                 waitingList.then(snapshot => {
                     snapshot.forEach(doc => {
