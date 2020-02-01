@@ -33,15 +33,27 @@
                         </v-toolbar>
                         <v-tabs vertical color="rgb(0, 0, 0, 0.8)">
                             <v-tab v-for="item in default_text.boss" color="rgb(0, 0, 0, 0.8)">
-                                <v-avatar size="36" class="mr-2">
-                                    <img :src="item.pic" alt="John ">
+                                <v-avatar size="36" class="mr-2 mr-sm-0">
+                                    <img :src="item.pic">
                                 </v-avatar>
-                               <p v-text="item.name"></p>
+                               <p v-text="item.name" class="d-none d-sm-flex"></p>
                             </v-tab>
                             <!--Start Tab 1 -->
                             <v-tab-item color="rgb(0, 0, 0, 0.8)">
                                 <v-card flat>
                                     <v-card-text>
+                                        <v-card>
+                                            <v-list-item>
+                                                <v-list-item-avatar tile class="mr-2">
+                                                    <img :src="default_text.boss[0].pic">
+                                                </v-list-item-avatar>
+                                                <v-list-item-content>
+                                                    <v-text v-for="(item, index) in default_text.boss[0].detail">
+                                                        <span>{{index + 1}} </span><span v-text="default_text.wave"></span> <span v-text="item"></span>
+                                                    </v-text>
+                                                </v-list-item-content>
+                                            </v-list-item>
+                                        </v-card>
                                         <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
                                             <v-subheader v-text="default_text.onGoing"></v-subheader>
 
@@ -57,7 +69,7 @@
                                                     </v-col>
                                                 </v-list-item-content>
                                                 <v-list-item-action>
-                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)" style="background-color: #E57373;color: white;"></v-btn>
                                                 </v-list-item-action>
                                             </v-list-item>
                                         </v-list>
@@ -76,7 +88,7 @@
                                                     <v-list-item-title v-text="item.name "></v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-action >
-                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
                                         </v-list>
@@ -109,7 +121,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" v-text="default_text.submit" @click="submitQueue(1)"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(1)"  style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -124,9 +136,21 @@
                             <!--Start Tab 2 -->
                             <v-tab-item color="rgb(0, 0, 0, 0.8)">
                                 <v-card flat>
+                                    <v-card>
+                                        <v-list-item>
+                                            <v-list-item-avatar tile class="mr-2">
+                                                <img :src="default_text.boss[1].pic">
+                                            </v-list-item-avatar>
+                                            <v-list-item-content>
+                                                <v-text v-for="(item, index) in default_text.boss[1].detail">
+                                                    <span>{{index + 1}} </span><span v-text="default_text.wave"></span> <span v-text="item"></span>
+                                                </v-text>
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                    </v-card>
                                     <v-card-text>
                                         <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader v-text="default_text.subTile"></v-subheader>
+                                            <v-subheader v-text="default_text.onGoing"></v-subheader>
 
                                             <v-list-item v-for="item in atkList2" :key="item.id" class="m-3">
                                                 <v-list-item-avatar>
@@ -140,7 +164,7 @@
                                                     </v-col>
                                                 </v-list-item-content>
                                                 <v-list-item-action>
-                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)" style="background-color: #E57373;color: white;"></v-btn>
                                                 </v-list-item-action>
                                             </v-list-item>
                                         </v-list>
@@ -159,7 +183,7 @@
                                                     <v-list-item-title v-text="item.name"></v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-action >
-                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
                                         </v-list>
@@ -173,7 +197,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" v-text="default_text.submit" @click="submitQueue(2)"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(2)"  style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -188,9 +212,21 @@
                             <!--Start Tab 3 -->
                             <v-tab-item color="rgb(0, 0, 0, 0.8)">
                                 <v-card flat>
+                                    <v-card>
+                                        <v-list-item>
+                                            <v-list-item-avatar tile class="mr-2">
+                                                <img :src="default_text.boss[2].pic">
+                                            </v-list-item-avatar>
+                                            <v-list-item-content>
+                                                <v-text v-for="(item, index) in default_text.boss[2].detail">
+                                                    <span>{{index + 1}} </span><span v-text="default_text.wave"></span> <span v-text="item"></span>
+                                                </v-text>
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                    </v-card>
                                     <v-card-text>
                                         <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader v-text="default_text.subTile"></v-subheader>
+                                            <v-subheader v-text="default_text.onGoing"></v-subheader>
 
                                             <v-list-item v-for="item in atkList3" :key="item.title" @click=" " class="m-3">
                                                 <v-list-item-avatar>
@@ -204,7 +240,7 @@
                                                     </v-col>
                                                 </v-list-item-content>
                                                 <v-list-item-action>
-                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)" style="background-color: #E57373;color: white;"></v-btn>
                                                 </v-list-item-action>
                                             </v-list-item>
                                         </v-list>
@@ -222,7 +258,7 @@
                                                     <v-list-item-title v-text="item.name"></v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-action >
-                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
                                         </v-list>
@@ -236,7 +272,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" v-text="default_text.submit" @click="submitQueue(3)"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(3)"  style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -251,9 +287,21 @@
                             <!--Start Tab 4 -->
                             <v-tab-item color="rgb(0, 0, 0, 0.8)">
                                 <v-card flat>
+                                    <v-card>
+                                        <v-list-item>
+                                            <v-list-item-avatar tile class="mr-2">
+                                                <img :src="default_text.boss[3].pic">
+                                            </v-list-item-avatar>
+                                            <v-list-item-content>
+                                                <v-text v-for="(item, index) in default_text.boss[3].detail">
+                                                    <span>{{index + 1}} </span><span v-text="default_text.wave"></span> <span v-text="item"></span>
+                                                </v-text>
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                    </v-card>
                                     <v-card-text>
                                         <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader v-text="default_text.subTile"></v-subheader>
+                                            <v-subheader v-text="default_text.onGoing"></v-subheader>
 
                                             <v-list-item v-for="item in atkList4" :key="item.title" @click=" " class="m-3">
                                                 <v-list-item-avatar>
@@ -267,7 +315,7 @@
                                                     </v-col>
                                                 </v-list-item-content>
                                                 <v-list-item-action>
-                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)" style="background-color: #E57373;color: white;"></v-btn>
                                                 </v-list-item-action>
                                             </v-list-item>
                                         </v-list>
@@ -285,7 +333,7 @@
                                                     <v-list-item-title v-text="item.name "></v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-action >
-                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
                                         </v-list>
@@ -299,7 +347,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" v-text="default_text.submit" @click="submitQueue(4)"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="text-center" v-text="default_text.submit" @click="submitQueue(4)"  style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -314,9 +362,21 @@
                             <!--Start Tab 5 -->
                             <v-tab-item color="rgb(0, 0, 0, 0.8)">
                                 <v-card flat>
+                                    <v-card>
+                                        <v-list-item>
+                                            <v-list-item-avatar tile class="mr-2">
+                                                <img :src="default_text.boss[4].pic">
+                                            </v-list-item-avatar>
+                                            <v-list-item-content>
+                                                <v-text v-for="(item, index) in default_text.boss[4].detail">
+                                                    <span>{{index + 1}} </span><span v-text="default_text.wave"></span> <span v-text="item"></span>
+                                                </v-text>
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                    </v-card>
                                     <v-card-text>
                                         <v-list subheader color="rgb(255, 255, 255, 0.8)" style="background-color: transparent;">
-                                            <v-subheader>正式战</v-subheader>
+                                            <v-subheader v-text="default_text.onGoing"></v-subheader>
 
                                             <v-list-item v-for="item in atkList5" :key="item.title" @click=" " class="m-3">
                                                 <v-list-item-avatar>
@@ -330,7 +390,7 @@
                                                     </v-col>
                                                 </v-list-item-content>
                                                 <v-list-item-action>
-                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleComplete" @click="battleComplete(item.id)" style="background-color: #E57373;color: white;"></v-btn>
                                                 </v-list-item-action>
                                             </v-list-item>
                                         </v-list>
@@ -349,7 +409,7 @@
                                                     <v-list-item-title v-text="item.name "></v-list-item-title>
                                                 </v-list-item-content>
                                                 <v-list-action >
-                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)"></v-btn>
+                                                    <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
                                         </v-list>
@@ -363,7 +423,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" v-text="default_text.submit" @click="submitQueue(5)"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" v-text="default_text.submit" @click="submitQueue(5)" style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -408,6 +468,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-select/3.4.0/vue-select.js "></script>
 <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js "></script>
 <script>
+
+
+    // Vue.prototype.$vuetify.theme = {
+    // primary: '#3f51b5',
+    // secondary: '#b0bec5',
+    // accent: '#8c9eff',
+    // error: '#ff00ff'
+    // };
     var app = new Vue({
         el: '#app',
         vuetify: new Vuetify(),
@@ -423,23 +491,28 @@
                 boss:[
                     {
                         name:'一王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/6e62cae5b99034b2b9678a230e95bd3e.png'
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/6e62cae5b99034b2b9678a230e95bd3e.png',
+                        detail:['200/100','225/100','330/360']
                     },
                     {
                         name:'二王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/73560c1aaabe170dff808615e0d0ff57.jpg'
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/73560c1aaabe170dff808615e0d0ff57.jpg',
+                        detail:['200/160','220/170','384/364']
                     },
                     {
                         name:'三王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/495320833c0277bfdba40f72aded6604.jpg'
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/495320833c0277bfdba40f72aded6604.jpg',
+                        detail:['140/100','220/100','403/401']
                     },
                     {
                         name:'四王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/075dfe3f0ed8b627a0a8894d64c4313a.png'
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/075dfe3f0ed8b627a0a8894d64c4313a.png',
+                        detail:['230/160','240/170','321/383']
                     },
                     {
                         name:'五王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/8f7f718840db69b983fbbf90a7a73401.jpg'
+                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/8f7f718840db69b983fbbf90a7a73401.jpg',
+                        detail:['不詳','不詳','不詳']
                     },
                 ],
                 subTitle:'公主結社 戰隊賽 狀況',
@@ -449,6 +522,7 @@
                 battleStart:'戰鬥開始',
                 onBattle:'戰鬥中',
                 submit:'提交',
+                wave:'段階目',
             },
             nameRules: [
                 v => !!v || '必须填写正确昵称',
@@ -604,6 +678,17 @@
             //     }
             // }
         }
+    })
+    Vue.use(Vuetify, {
+    theme: {
+        primary: 'red',
+        secondary: '#D8F0F0',
+        accent: '#303030',
+        error: '#F72A38',
+        warning: '#F5E582',
+        info: '#F0F0F0',
+        success: '#789078'
+    }
     })
 </script>
 
