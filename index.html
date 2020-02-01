@@ -32,7 +32,7 @@
                             <v-toolbar-title v-text="default_text.subTitle">
                             </v-toolbar-title>
                         </v-toolbar>
-                        <v-tabs vertical color="rgb(0, 0, 0, 0.8)">
+                        <v-tabs fixed-tabs slider-color="white" color="rgb(0, 0, 0, 0.8)">
                             <v-tab v-for="item in default_text.boss" color="rgb(0, 0, 0, 0.8)">
                                 <v-avatar size="36" class="mr-2 mr-sm-0">
                                     <img :src="item.pic">
@@ -41,7 +41,7 @@
                             </v-tab>
                             <!--Start Tab 1 -->
                             <v-tab-item color="rgb(0, 0, 0, 0.8)">
-                                <v-card flat>
+                                <v-card>
                                     <v-card-text>
                                         <v-card>
                                             <v-list-item>
