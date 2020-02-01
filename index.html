@@ -448,7 +448,9 @@
                 </v-snackbar>
             </v-row>
         </v-container>
-
+        <v-overlay :value="overlay">
+            <v-progress-circular indeterminate size="64"></v-progress-circular>
+          </v-overlay>
         <v-footer padless style="position: fixed; bottom: 0;width: 100%;">
             <v-col class="text-center lighten-2 " cols="12 " color="rgb(0, 0, 0, 0.5) ">
                 <small>
@@ -487,6 +489,7 @@
             name: '',
             target: '',
             snackbar: false,
+            overlay: true,
             text: '成功提交',
             default_text:{
                 boss:[
@@ -527,7 +530,7 @@
             },
             nameRules: [
                 v => !!v || '必须填写正确昵称',
-                v => (v && v.length <= 10 && v.length > 2) || '确保昵称是正确的,并且不少于2字',
+                v => (v && v.length <= 10 && v.length > 1) || '确保昵称是正确的,并且不少于2字',
             ],
             atkList1: [],
             preAtkList1: [],
@@ -606,6 +609,7 @@
                         }
                         console.log(doc.id, '=>', doc.data());
                         console.log(this.atkList1);
+                        this.overlay = false;
                     });
                 })
                 .catch(err => {
@@ -631,6 +635,7 @@
                         this.snackbar = true;
                         this.snackbarText = "提交失败,请再试一次"
                     });
+                    this.overlay = true;
                     this.snackbar = true;
                         this.snackbarText = "成功提交"
 
@@ -643,6 +648,7 @@
                 }).catch(function(error) {
                     console.error("Error removing document: ", error);
                 });
+                this.overlay = true;
                 this.snackbar = true;
                 this.snackbarText = "成功提交,結束戰鬥"
             },
@@ -650,6 +656,7 @@
                this.db.collection("waitingList").doc(id).update({ status: true }).then(function(docRef) {
                 location.reload(); 
                 })
+                this.overlay = true;
                 this.snackbar = true;
                 this.snackbarText = "成功提交,開始戰鬥"
             },
@@ -679,17 +686,6 @@
             //     }
             // }
         }
-    })
-    Vue.use(Vuetify, {
-    theme: {
-        primary: 'red',
-        secondary: '#D8F0F0',
-        accent: '#303030',
-        error: '#F72A38',
-        warning: '#F5E582',
-        info: '#F0F0F0',
-        success: '#789078'
-    }
     })
 </script>
 
