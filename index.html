@@ -34,7 +34,7 @@
                         </v-toolbar>
                         <v-tabs fixed-tabs slider-color="white" color="rgb(0, 0, 0, 0.8)">
                             <v-tab v-for="item in default_text.boss" color="rgb(0, 0, 0, 0.8)">
-                                <v-avatar size="36" class="mr-2 mr-sm-0">
+                                <v-avatar tile size="36" class="mr-2 mr-sm-0">
                                     <img :src="item.pic">
                                 </v-avatar>
                                <p v-text="item.name" class="d-none d-sm-flex"></p>
@@ -448,8 +448,10 @@
                 </v-snackbar>
             </v-row>
         </v-container>
-        <v-overlay :value="overlay">
-            <v-progress-circular indeterminate size="64"></v-progress-circular>
+        <v-overlay :value="overlay" :opacity="opacity">
+            <v-progress-circular indeterminate size="64">
+                <v-img src="./img/loading.gif"></v-img>
+            </v-progress-circular>
           </v-overlay>
         <v-footer padless style="position: fixed; bottom: 0;width: 100%;">
             <v-col class="text-center lighten-2 " cols="12 " color="rgb(0, 0, 0, 0.5) ">
