@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div id="app" style="background: url(https://image.b2bmilestone.com/2a6f31e9cc2a1c99d68e4315872c99870640c76b/000901788_01.jpg) no-repeat center; background-size: cover; height: 100vh;">
+    <div id="app" style="background: url(./img/111131.webp) no-repeat center; background-size: cover; height: 100%;">
         <v-container>
             <v-row style="justify-content: center;">
                 <v-col cols="12" lg="8" class="text-center">
@@ -32,7 +32,7 @@
                             <v-toolbar-title v-text="default_text.subTitle">
                             </v-toolbar-title>
                         </v-toolbar>
-                        <v-tabs fixed-tabs slider-color="white" color="rgb(0, 0, 0, 0.8)">
+                        <v-tabs fixed-tabs color="rgb(0, 0, 0, 0.8)" style="background-color: transparent;">
                             <v-tab v-for="item in default_text.boss" color="rgb(0, 0, 0, 0.8)">
                                 <v-avatar tile size="36" class="mr-2 mr-sm-0">
                                     <img :src="item.pic">
@@ -40,7 +40,7 @@
                                <p v-text="item.name" class="d-none d-sm-flex"></p>
                             </v-tab>
                             <!--Start Tab 1 -->
-                            <v-tab-item color="rgb(0, 0, 0, 0.8)">
+                            <v-tab-item color="rgb(0, 0, 0, 0.8)" style="background-color: transparent;">
                                 <v-card>
                                     <v-card-text>
                                         <v-card>
@@ -114,12 +114,12 @@
 
                                         <v-row style="justify-content: center;">
                                             <v-col cols="12" md="8" class="text-center">
-                                                <v-form v-model="valid">
+                                                <v-form v-model="valid" @keyup.native.enter="submitQueue(1)">
                                                     <v-card color="rgb(255, 255, 255, 0.8) " class="p-3">
                                                         <v-container class="p-3 ">
                                                             <v-row>
                                                                 <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
+                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
                                                                     <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(1)"  style="background-color: #81C784; color: white;"></v-btn>
@@ -195,7 +195,7 @@
                                                         <v-container class="p-3 ">
                                                             <v-row>
                                                                 <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
+                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
                                                                     <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(2)"  style="background-color: #81C784; color: white;"></v-btn>
@@ -270,7 +270,7 @@
                                                         <v-container class="p-3 ">
                                                             <v-row>
                                                                 <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
+                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
                                                                     <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(3)"  style="background-color: #81C784; color: white;"></v-btn>
@@ -345,7 +345,7 @@
                                                         <v-container class="p-3 ">
                                                             <v-row>
                                                                 <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
+                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
                                                                     <v-btn :disabled="!valid " class="text-center" v-text="default_text.submit" @click="submitQueue(4)"  style="background-color: #81C784; color: white;"></v-btn>
@@ -421,7 +421,7 @@
                                                         <v-container class="p-3 ">
                                                             <v-row>
                                                                 <v-col cols="12 ">
-                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="10 " label="游戏昵称 " required></v-text-field>
+                                                                    <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
                                                                     <v-btn :disabled="!valid " class="mr-4 purple darken-2 text-center" v-text="default_text.submit" @click="submitQueue(5)" style="background-color: #81C784; color: white;"></v-btn>
@@ -492,7 +492,7 @@
             target: '',
             snackbar: false,
             overlay: true,
-            text: '成功提交',
+            text: '',
             default_text:{
                 boss:[
                     {
@@ -529,10 +529,12 @@
                 onBattle:'戰鬥中',
                 submit:'提交',
                 wave:'段階目',
+                team:'推薦隊伍',
+                team:'推薦隊伍',
             },
             nameRules: [
                 v => !!v || '必须填写正确昵称',
-                v => (v && v.length <= 10 && v.length > 1) || '确保昵称是正确的,并且不少于2字',
+                v => (v && v.length <= 20 && v.length > 1) || '确保昵称是正确的,并且不少于2字',
             ],
             atkList1: [],
             preAtkList1: [],
@@ -638,8 +640,8 @@
                         this.snackbarText = "提交失败,请再试一次"
                     });
                     this.overlay = true;
+                        this.text = "成功提交"
                     this.snackbar = true;
-                        this.snackbarText = "成功提交"
 
             },
             battleComplete(id) {
@@ -651,16 +653,16 @@
                     console.error("Error removing document: ", error);
                 });
                 this.overlay = true;
+                this.text = "成功提交,結束戰鬥"
                 this.snackbar = true;
-                this.snackbarText = "成功提交,結束戰鬥"
             },
             battleStart(id) {
                this.db.collection("waitingList").doc(id).update({ status: true }).then(function(docRef) {
                 location.reload(); 
                 })
+                this.text = "刷新後請到回王的頁面確認是否有人也在戰鬥中"
                 this.overlay = true;
                 this.snackbar = true;
-                this.snackbarText = "成功提交,開始戰鬥"
             },
             // checkForm: function(e) {
             //     if (this.name && this.target) {
@@ -690,5 +692,11 @@
         }
     })
 </script>
+<style>
+.v-card,
+.v-item-group{
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+</style>
 
 </html>
