@@ -650,8 +650,11 @@
                 this.snackbar = true;
             },
             battleStart(id) {
+                var date = new Date();
+                var timestamp = date.getTime();
                 this.db.collection("waitingList").doc(id).update({
-                    status: true
+                    status: true,
+                    time: timestamp,
                 }).then(function(docRef) {
                     location.reload();
                 })
