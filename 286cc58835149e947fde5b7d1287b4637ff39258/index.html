@@ -691,16 +691,10 @@
             battleComplete(id) {
                 console.log(id)
                 this.db.collection("waitingList").doc(id).get().then(
-                    mydata = {
-                        'name': doc.data().name,
-                        'status': doc.data().status,
-                        'time': doc.data().time,
-                        'target': doc.data().target
-                    };
                     this.db.collection("completeList").add({
-                        id:mydata.name,
-                        target: mydata.target,
-                        time: mydata.time,
+                        id:doc.data().name,
+                        target: doc.data().target,
+                        time: doc.data().time,
                         status: false
                     })
                 );
