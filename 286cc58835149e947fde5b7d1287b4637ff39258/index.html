@@ -690,9 +690,8 @@
             },
             battleComplete(id) {
                 console.log(id)
-                this.db.collection("waitingList").doc(id).get().then(snapshot => {
-                    const mydata = {
-                        'id': doc.id,
+                this.db.collection("waitingList").doc(id).get().then(
+                    mydata = {
                         'name': doc.data().name,
                         'status': doc.data().status,
                         'time': doc.data().time,
@@ -704,7 +703,7 @@
                         time: mydata.time,
                         status: false
                     })
-                });
+                );
 
                 this.db.collection("waitingList").doc(id).delete().then(function() {
                     console.log("Document successfully deleted!");
