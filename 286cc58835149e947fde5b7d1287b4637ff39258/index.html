@@ -38,7 +38,7 @@
                                 <v-avatar tile size="36" class="mr-2 mr-sm-0">
                                     <img :src="item.pic">
                                 </v-avatar>
-                               <p v-text="item.name" class="d-none d-sm-flex"></p>
+                                <p v-text="item.name" class="d-none d-sm-flex"></p>
                             </v-tab>
                             <!--Start Tab 1 -->
                             <v-tab-item color="rgb(0, 0, 0, 0.8)" style="background-color: transparent;">
@@ -79,7 +79,7 @@
                                         <v-divider></v-divider>
 
                                         <v-list subheader color="rgb(255, 255, 255, 0.8) ">
-                                            <v-subheader  v-text="default_text.ready"></v-subheader>
+                                            <v-subheader v-text="default_text.ready"></v-subheader>
 
                                             <v-list-item v-for="item in preAtkList1 " :key="item.title" class="m-3 ">
                                                 <v-list-item-avatar>
@@ -89,7 +89,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title v-text="item.name "></v-list-item-title>
                                                 </v-list-item-content>
-                                                <v-list-action >
+                                                <v-list-action>
                                                     <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
@@ -97,25 +97,25 @@
 
                                         <v-divider></v-divider>
 
-                                        
-                                            <v-container>
-                                                <v-row>
-                                                    <v-col cols="12" md="6">
-                                                        <v-card>
-                                                            <v-img src="./img/b1/1.png" aspect-ratio="5" contain></v-img>
-                                                        </v-card>
-                                                    </v-col>
-                                                    <v-col cols="12" md="6">
-                                                        <v-card>
-                                                            <v-img src="./img/b1/2.png" aspect-ratio="5" contain></v-img>
-                                                        </v-card>
-                                                    </v-col>
-                                                </v-row>
-                                            </v-container>
+
+                                        <v-container>
+                                            <v-row>
+                                                <v-col cols="12" md="6">
+                                                    <v-card>
+                                                        <v-img src="./img/b1/1.png" aspect-ratio="5" contain></v-img>
+                                                    </v-card>
+                                                </v-col>
+                                                <v-col cols="12" md="6">
+                                                    <v-card>
+                                                        <v-img src="./img/b1/2.png" aspect-ratio="5" contain></v-img>
+                                                    </v-card>
+                                                </v-col>
+                                            </v-row>
+                                        </v-container>
 
                                         <v-row style="justify-content: center;">
                                             <v-col cols="12" md="8" class="text-center">
-                                                <v-form v-model="valid" @keyup.native.enter="submitQueue(1)">
+                                                <v-form form v-model="valid" @keyup.native.enter="submitQueue(1)">
                                                     <v-card color="rgb(255, 255, 255, 0.8) " class="p-3">
                                                         <v-container class="p-3 ">
                                                             <v-row>
@@ -123,7 +123,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(1)"  style="background-color: #81C784; color: white;"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(1)" style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -184,7 +184,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title v-text="item.name"></v-list-item-title>
                                                 </v-list-item-content>
-                                                <v-list-action >
+                                                <v-list-action>
                                                     <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
@@ -199,7 +199,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(2)"  style="background-color: #81C784; color: white;"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(2)" style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -259,7 +259,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title v-text="item.name"></v-list-item-title>
                                                 </v-list-item-content>
-                                                <v-list-action >
+                                                <v-list-action>
                                                     <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
@@ -274,7 +274,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(3)"  style="background-color: #81C784; color: white;"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="mr-4 text-center" v-text="default_text.submit" @click="submitQueue(3)" style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -334,7 +334,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title v-text="item.name "></v-list-item-title>
                                                 </v-list-item-content>
-                                                <v-list-action >
+                                                <v-list-action>
                                                     <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
@@ -349,7 +349,7 @@
                                                                     <v-text-field v-model="name" :rules="nameRules" :counter="20 " label="游戏昵称 " required></v-text-field>
                                                                 </v-col>
                                                                 <v-col cols="12 ">
-                                                                    <v-btn :disabled="!valid " class="text-center" v-text="default_text.submit" @click="submitQueue(4)"  style="background-color: #81C784; color: white;"></v-btn>
+                                                                    <v-btn :disabled="!valid " class="text-center" v-text="default_text.submit" @click="submitQueue(4)" style="background-color: #81C784; color: white;"></v-btn>
                                                                 </v-col>
                                                             </v-row>
                                                         </v-container>
@@ -410,7 +410,7 @@
                                                 <v-list-item-content>
                                                     <v-list-item-title v-text="item.name "></v-list-item-title>
                                                 </v-list-item-content>
-                                                <v-list-action >
+                                                <v-list-action>
                                                     <v-btn v-text="default_text.battleStart" @click="battleStart(item.id)" style="background-color: #5E35B1;color: white;"></v-btn>
                                                 </v-list-action>
                                             </v-list-item>
@@ -451,9 +451,9 @@
         </v-container>
         <v-overlay :value="overlay" :opacity="opacity">
             <v-progress-circular indeterminate size="64">
-                <v-img src="../img/loading.gif"></v-img>
+                <v-img src="../img/loading.gif" style="border-radius: 15px;"></v-img>
             </v-progress-circular>
-          </v-overlay>
+        </v-overlay>
         <v-footer padless style="position: fixed; bottom: 0;width: 100%;">
             <v-col class="text-center lighten-2 " cols="12 " color="rgb(0, 0, 0, 0.5) ">
                 <small>
@@ -474,8 +474,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-select/3.4.0/vue-select.js "></script>
 <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js "></script>
 <script>
-
-
     // Vue.prototype.$vuetify.theme = {
     // primary: '#3f51b5',
     // secondary: '#b0bec5',
@@ -494,44 +492,38 @@
             snackbar: false,
             overlay: true,
             text: '',
-            default_text:{
-                boss:[
-                    {
-                        name:'一王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/6e62cae5b99034b2b9678a230e95bd3e.png',
-                        detail:['200/100','225/100','330/360']
-                    },
-                    {
-                        name:'二王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/73560c1aaabe170dff808615e0d0ff57.jpg',
-                        detail:['200/160','220/170','384/364']
-                    },
-                    {
-                        name:'三王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/495320833c0277bfdba40f72aded6604.jpg',
-                        detail:['140/100','220/100','403/401']
-                    },
-                    {
-                        name:'四王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/075dfe3f0ed8b627a0a8894d64c4313a.png',
-                        detail:['230/160','240/170','321/383']
-                    },
-                    {
-                        name:'五王',
-                        pic:'https://appmedia.jp/wp-content/uploads/2018/03/8f7f718840db69b983fbbf90a7a73401.jpg',
-                        detail:['不詳','不詳','不詳']
-                    },
-                ],
-                subTitle:'公主結社 戰隊賽 狀況',
-                onGoing:'正式戰',
-                ready:'預選（排隊中)',
-                battleComplete:'戰鬥結束',
-                battleStart:'戰鬥開始',
-                onBattle:'戰鬥中',
-                submit:'提交',
-                wave:'段階目',
-                team:'推薦隊伍',
-                team:'推薦隊伍',
+            default_text: {
+                boss: [{
+                    name: '一王',
+                    pic: 'https://appmedia.jp/wp-content/uploads/2018/03/6e62cae5b99034b2b9678a230e95bd3e.png',
+                    detail: ['200/100', '225/100', '330/360']
+                }, {
+                    name: '二王',
+                    pic: 'https://appmedia.jp/wp-content/uploads/2018/03/73560c1aaabe170dff808615e0d0ff57.jpg',
+                    detail: ['200/160', '220/170', '384/364']
+                }, {
+                    name: '三王',
+                    pic: 'https://appmedia.jp/wp-content/uploads/2018/03/495320833c0277bfdba40f72aded6604.jpg',
+                    detail: ['140/100', '220/100', '403/401']
+                }, {
+                    name: '四王',
+                    pic: 'https://appmedia.jp/wp-content/uploads/2018/03/075dfe3f0ed8b627a0a8894d64c4313a.png',
+                    detail: ['230/160', '240/170', '321/383']
+                }, {
+                    name: '五王',
+                    pic: 'https://appmedia.jp/wp-content/uploads/2018/03/8f7f718840db69b983fbbf90a7a73401.jpg',
+                    detail: ['不詳', '不詳', '不詳']
+                }, ],
+                subTitle: '公主結社 戰隊賽 狀況',
+                onGoing: '正式戰',
+                ready: '預選（排隊中)',
+                battleComplete: '戰鬥結束',
+                battleStart: '戰鬥開始',
+                onBattle: '戰鬥中',
+                submit: '提交',
+                wave: '段階目',
+                team: '推薦隊伍',
+                team: '推薦隊伍',
             },
             nameRules: [
                 v => !!v || '必须填写正确昵称',
@@ -566,7 +558,7 @@
             this.db = firebase.firestore(app);
             let waitingRef = this.db.collection('waitingList').orderBy("time");
             let waitingList = waitingRef.get()
-                waitingList.then(snapshot => {
+            waitingList.then(snapshot => {
                     snapshot.forEach(doc => {
                         const data = {
                             'id': doc.id,
@@ -633,23 +625,23 @@
                         status: false
                     })
                     .then(function(docRef) {
-                        location.reload(); 
+                        location.reload();
                     })
                     .catch(function(error) {
                         console.error("Error adding document: ", error);
                         this.snackbar = true;
                         this.snackbarText = "提交失败,请再试一次"
                     });
-                    this.overlay = true;
-                        this.text = "成功提交"
-                    this.snackbar = true;
+                this.overlay = true;
+                this.text = "成功提交"
+                this.snackbar = true;
 
             },
             battleComplete(id) {
-               console.log(id)
-               this.db.collection("waitingList").doc(id).delete().then(function() {
+                console.log(id)
+                this.db.collection("waitingList").doc(id).delete().then(function() {
                     console.log("Document successfully deleted!");
-                    location.reload(); 
+                    location.reload();
                 }).catch(function(error) {
                     console.error("Error removing document: ", error);
                 });
@@ -658,8 +650,13 @@
                 this.snackbar = true;
             },
             battleStart(id) {
-               this.db.collection("waitingList").doc(id).update({ status: true }).then(function(docRef) {
-                location.reload(); 
+                var date = new Date();
+                var timestamp = date.getTime();
+                this.db.collection("waitingList").doc(id).update({
+                    status: true,
+                    time: timestamp,
+                }).then(function(docRef) {
+                    location.reload();
                 })
                 this.text = "刷新後請到回王的頁面確認是否有人也在戰鬥中"
                 this.overlay = true;
@@ -694,10 +691,10 @@
     })
 </script>
 <style>
-.v-card,
-.v-item-group{
-    background-color: rgba(255, 255, 255, 0.3) !important;
-}
+    .v-card,
+    .v-item-group {
+        background-color: rgba(255, 255, 255, 0.3) !important;
+    }
 </style>
 
 </html>
