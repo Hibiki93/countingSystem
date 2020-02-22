@@ -690,15 +690,6 @@
             },
             battleComplete(id) {
                 console.log(id)
-                this.db.collection("waitingList").doc(id).get().then(
-                    this.db.collection("completeList").add({
-                        id:doc.data().name,
-                        target: doc.data().target,
-                        time: doc.data().time,
-                        status: false
-                    })
-                );
-
                 this.db.collection("waitingList").doc(id).delete().then(function() {
                     console.log("Document successfully deleted!");
                     location.reload();
