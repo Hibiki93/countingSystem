@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>公主結社 報刀系統</title>
+    <title>Princess Connect Queue System</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <span style="background: url(img/111131.webp) center; background-size: contain; position: fixed; top: 0;left: 0; height: 100vh; width: 100vw;"></span>
+    <span style="background: url(https://www.shell.com/energy-and-innovation/the-energy-future/scenarios/shell-scenario-sky/_jcr_content/pagePromo/image.img.960.jpeg/1548184031017/clear-blue-sky.jpeg) center; background-size: contain; position: fixed; top: 0;left: 0; height: 100vh; width: 100vw;"></span>
     <div id="app">
         <v-container>
             <v-row style="justify-content: center;">
@@ -502,7 +502,6 @@
         </v-container>
         <v-overlay :value="overlay" :opacity="opacity">
             <v-progress-circular indeterminate size="64">
-                <v-img src="img/loading.gif" style="border-radius: 15px;"></v-img>
             </v-progress-circular>
         </v-overlay>
         <v-footer padless style="position: fixed; bottom: 0;width: 100%;">
@@ -545,40 +544,40 @@
             text: '',
             default_text: {
                 boss: [{
-                    name: '一王',
+                    name: 'Boss 1',
                     pic: 'https://appmedia.jp/wp-content/uploads/2018/03/6e62cae5b99034b2b9678a230e95bd3e.png',
                     detail: ['200/100', '225/100', '330/360']
                 }, {
-                    name: '二王',
+                    name: 'Boss 2',
                     pic: 'https://appmedia.jp/wp-content/uploads/2018/03/73560c1aaabe170dff808615e0d0ff57.jpg',
                     detail: ['200/160', '220/170', '384/364']
                 }, {
-                    name: '三王',
+                    name: 'Boss 3',
                     pic: 'https://appmedia.jp/wp-content/uploads/2018/03/495320833c0277bfdba40f72aded6604.jpg',
                     detail: ['140/100', '220/100', '403/401']
                 }, {
-                    name: '四王',
+                    name: 'Boss 4',
                     pic: 'https://appmedia.jp/wp-content/uploads/2018/03/075dfe3f0ed8b627a0a8894d64c4313a.png',
                     detail: ['230/160', '240/170', '321/383']
                 }, {
-                    name: '五王',
+                    name: 'Boss 5',
                     pic: 'https://appmedia.jp/wp-content/uploads/2018/03/8f7f718840db69b983fbbf90a7a73401.jpg',
                     detail: ['280/304 | 282/302 | 283/279', '350/374 | 352/372 | 353/349', '430/469 | 432/467 | 433/444']
                 }, ],
                 subTitle: '公主結社 戰隊賽 狀況',
-                onGoing: '正式戰',
-                ready: '預選（排隊中)',
-                battleComplete: '戰鬥結束',
-                battleStart: '戰鬥開始',
-                onBattle: '戰鬥中',
-                submit: '提交',
-                wave: '段階目',
+                onGoing: 'Fighting With Boss',
+                ready: 'On Queue',
+                battleComplete: 'Battle Complete',
+                battleStart: 'Battle Start',
+                onBattle: 'In Fight',
+                submit: 'Submit',
+                wave: 'Wave',
                 team: '推薦隊伍',
                 team: '推薦隊伍',
             },
             nameRules: [
-                v => !!v || '必须填写正确昵称',
-                v => (v && v.length <= 20 && v.length > 1) || '确保昵称是正确的,并且不少于2字',
+                v => !!v || 'Keyin Your User Name',
+                v => (v && v.length <= 20 && v.length > 1) || 'Make Sure Your Username Not Less that 2 Charater',
             ],
             atkList1: [],
             preAtkList1: [],
@@ -681,10 +680,10 @@
                     .catch(function(error) {
                         console.error("Error adding document: ", error);
                         this.snackbar = true;
-                        this.snackbarText = "提交失败,请再试一次"
+                        this.snackbarText = "Submit Fail,Please Try Again"
                     });
                 this.overlay = true;
-                this.text = "成功提交"
+                this.text = "Successfully Submit"
                 this.snackbar = true;
 
             },
@@ -697,7 +696,7 @@
                     console.error("Error removing document: ", error);
                 });
                 this.overlay = true;
-                this.text = "成功提交,結束戰鬥"
+                this.text = "Successfully Submit,Battle Complete"
                 this.snackbar = true;
             },
             battleStart(id) {
@@ -709,7 +708,7 @@
                 }).then(function(docRef) {
                     location.reload();
                 })
-                this.text = "刷新後請到回王的頁面確認是否有人也在戰鬥中"
+                this.text = "Please see the fighting list to make sure have someone also fighting with boss"
                 this.overlay = true;
                 this.snackbar = true;
             },
